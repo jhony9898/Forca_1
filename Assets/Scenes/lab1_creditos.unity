@@ -369,7 +369,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Jo\xE3o Pedro Silva Cardoso\nLarzon Dias\nProfessor Minami"
+  m_Text: "Jo\xE3o Pedro Silva Cardoso RA:11201810524\nLarzon Dias RA:11202020149\nProfessor
+    Minami"
 --- !u!222 &786215881
 CanvasRenderer:
   m_ObjectHideFlags: 0
