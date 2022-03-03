@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject centro;           //objeto de texto que indica centro
 
     private string palavraOculta = "";  // Palavra a ser adivinhada (LAB1 PARTE A)
+
     //private string[] palavrasOcultas = new string[] { "carro", "elefante", "futebol" }; //array de palavras ocultas
     
     private int tamanhoPalavraOculta;   //tamanho da palavra oculta
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour
         tamanhoPalavraOculta = palavraOculta.Length;        //define o numero de letras da palavra oculta
         palavraOculta = palavraOculta.ToUpper();            //transforma a palavra em maiuscula
         letrasOcultas = new char[tamanhoPalavraOculta];     //intanciamos o array de chars das letras da palavra
-        letrasDescoberas = new bool[tamanhoPalavraOculta];  //instanciamos o array boll do indicador de letras certas
+        letrasDescoberas = new bool[tamanhoPalavraOculta];  //instanciamos o array bool do indicador de letras certas
         letrasOcultas = palavraOculta.ToCharArray();        // copia-se a palavra no array de letras
 
     }
@@ -110,34 +111,34 @@ public class GameManager : MonoBehaviour
 
     void UpdateNumTentativas()
     {
-        GameObject.Find("numTentativas").GetComponent<Text>().text=numTentativas + " | " + maxNumTentativas;
+        GameObject.Find("numTentativas").GetComponent<Text>().text=numTentativas + " | " + maxNumTentativas;  //valor do num de tentativas na tela
 
     }
 
     void UpdateScore()
     {
-        GameObject.Find("scoreUI").GetComponent<Text>().text = "Score " + score;
+        GameObject.Find("scoreUI").GetComponent<Text>().text = "Score " + score;    //Valor do score na tela
     }
 
     void VerificaSePalavraDescoberta()
     {
-        bool condicao = true;                                                       // o teste
-        for(int i = 0; i < tamanhoPalavraOculta; i++)                               // a palavra inteira
+        bool condicao = true;                                                       // inicializa variavel 
+        for(int i = 0; i < tamanhoPalavraOculta; i++)                               // testa usando o tamanho da palavra
         {
-            condicao = condicao && letrasDescoberas[i];                             // quantidade de letras descobertas
+            condicao = condicao && letrasDescoberas[i];                             // verifica se todas as letras foram descobertas
         }
-        if (condicao)
+        if (condicao)                                                               // a pessoa acertou a palavra e sobreviveu
         {
-            PlayerPrefs.SetString("ultimaPalavraOculta", palavraOculta);            // palavra oculta não descoberta se torna a última
-            SceneManager.LoadScene("lab1_salvo");                                   // a pessoa acertou a palavra e sobreviveu
+            PlayerPrefs.SetString("ultimaPalavraOculta", palavraOculta);            // indica qual era a palavra
+            SceneManager.LoadScene("lab1_salvo");                                   // faz load da cena em que o jogador sobrevive
         }
     }
     
     string PegaUmaPalavraDoArquivo()
     {
         TextAsset t1 = (TextAsset)Resources.Load("palavras", typeof(TextAsset));     // leitura de arquivo
-        string s = t1.text;                                                          // o texto será lido até s
-        string[] palavras = s.Split(' ');                                            // lê a palavra sem os acentos
+        string s = t1.text;                                                          // seleciona o texto do asset e coloca na variavel s
+        string[] palavras = s.Split(' ');                                            // separa o conjunto de palavras em um vetor, usando o espaço como separador
         int palavraAleatoria = Random.Range(0, palavras.Length + 1);                 // sorteamos uma palavra aleatória 
         return (palavras[palavraAleatoria]);                                         // retorna uma das palavras sorteadas
     }

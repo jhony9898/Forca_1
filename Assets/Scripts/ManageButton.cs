@@ -19,15 +19,15 @@ public class ManageButton : MonoBehaviour
 
     public void StartMundoGame()
     {
-        SceneManager.LoadScene("Lab1");
+        SceneManager.LoadScene("Lab1");  //load cena 1
     }
     public void StartMenu()
     {
-        SceneManager.LoadScene("lab1_start");
+        SceneManager.LoadScene("lab1_start"); //load cena Menu
     }
 
     public void StartCreditos()
     {
-        SceneManager.LoadScene("lab1_creditos");
+        SceneManager.LoadScene("lab1_creditos"); //load cena créditos
     }
 }
