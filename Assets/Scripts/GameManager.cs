@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
                 UpdateNumTentativas();
                 if(numTentativas > maxNumTentativas)
                 {
-                    SceneManager.LoadScene("lab1_forca");
+                    SceneManager.LoadScene("lab1_forca");                         // a pessoa perdeu e foi enforcada
                 }
                 for(int i = 0; i <= tamanhoPalavraOculta;i++)
                 {
@@ -121,25 +121,25 @@ public class GameManager : MonoBehaviour
 
     void VerificaSePalavraDescoberta()
     {
-        bool condicao = true;
-        for(int i = 0; i < tamanhoPalavraOculta; i++)
+        bool condicao = true;                                                       // o teste
+        for(int i = 0; i < tamanhoPalavraOculta; i++)                               // a palavra inteira
         {
-            condicao = condicao && letrasDescoberas[i]; 
+            condicao = condicao && letrasDescoberas[i];                             // quantidade de letras descobertas
         }
         if (condicao)
         {
-            PlayerPrefs.SetString("ultimaPalavraOculta", palavraOculta);
-            SceneManager.LoadScene("lab1_salvo");
+            PlayerPrefs.SetString("ultimaPalavraOculta", palavraOculta);            // palavra oculta não descoberta se torna a última
+            SceneManager.LoadScene("lab1_salvo");                                   // a pessoa acertou a palavra e sobreviveu
         }
     }
     
     string PegaUmaPalavraDoArquivo()
     {
-        TextAsset t1 = (TextAsset)Resources.Load("palavras", typeof(TextAsset));
-        string s = t1.text;
-        string[] palavras = s.Split(' ');
-        int palavraAleatoria = Random.Range(0, palavras.Length + 1);
-        return (palavras[palavraAleatoria]);
+        TextAsset t1 = (TextAsset)Resources.Load("palavras", typeof(TextAsset));     // leitura de arquivo
+        string s = t1.text;                                                          // o texto será lido até s
+        string[] palavras = s.Split(' ');                                            // lê a palavra sem os acentos
+        int palavraAleatoria = Random.Range(0, palavras.Length + 1);                 // sorteamos uma palavra aleatória 
+        return (palavras[palavraAleatoria]);                                         // retorna uma das palavras sorteadas
     }
 
 }
